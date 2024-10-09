@@ -4,9 +4,21 @@
 >
 > 依赖：flask, ddddocr （均可通过pip安装）
 
-配好环境，安装依赖。
 
+### 说明脚本
+```
+ocr_test_by_ddddcor_local.py  用于本地调用ddddocr进行识别测试
+
+ocr_test_by_ddddcor_api.py   用于调用api接口进行本地图片识别，需要先启动api识别服务器
+
+ddddocr_api_simple.py，启动flask web服务 用于接受图片数据进行验证码识别
+```
+
+### 使用方法
+```
+配好环境，安装依赖。
 执行 python3 ddddocr_api_simple.py，启动flask web服务。
+```
 
 + 接口URL就是web服务的地址，默认是`http://127.0.0.1:5000`
 
@@ -24,10 +36,4 @@ POST /base64ocr HTTP/1.1
 iVBORw0KGgoAAAANSUhEUgAAAFAAAAArCAIAAABglpj4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAABApSURBVGhDXdl36Pbj
 
 返回文本即为验证码
-```
-
-# 其他脚本
-```
-ocr_test_by_ddddcor_local.py  用于本地调用ddddocr进行识别测试
-ocr_test_by_ddddcor_api.py   用于调用api接口进行本地图片识别，需要先启动api识别服务器
 ```
