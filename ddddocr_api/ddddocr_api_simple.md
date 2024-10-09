@@ -8,18 +8,26 @@
 
 执行 python3 ddddocr_api_simple.py，启动flask web服务。
 
-+ 接口URL就是web服务的地址，默认是`http://127.0.0.1:5000`。
++ 接口URL就是web服务的地址，默认是`http://127.0.0.1:5000`
+
++ 请求接口地址当前为 POST / 或者 /base64ocr
 
 + 请求模板如下：
 
-  ```http
-  POST / HTTP/1.1
-  
-  iVBORw0KGgoAAAANSUhEUgAAAFAAAAArCAIAAABglpj4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAABApSURBVGhDXdl36Pbj
-  
-  返回文本即为验证码
-  
-  POST /base64ocr HTTP/1.1
-  
-  iVBORw0KGgoAAAANSUhEUgAAAFAAAAArCAIAAABglpj4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAABApSURBVGhDXdl36Pbj
-  ```
+```http
+POST / HTTP/1.1
+
+iVBORw0KGgoAAAANSUhEUgAAAFAAAAArCAIAAABglpj4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAABApSURBVGhDXdl36Pbj
+
+POST /base64ocr HTTP/1.1
+
+iVBORw0KGgoAAAANSUhEUgAAAFAAAAArCAIAAABglpj4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAABApSURBVGhDXdl36Pbj
+
+返回文本即为验证码
+```
+
+# 其他脚本
+```
+ocr_test_by_ddddcor_local.py  用于本地调用ddddocr进行识别测试
+ocr_test_by_ddddcor_api.py   用于调用api接口进行本地图片识别，需要先启动api识别服务器
+```
