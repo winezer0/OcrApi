@@ -7,6 +7,7 @@ app.config['DEBUG'] = True
 
 
 @app.route('/', methods=["POST"])
+@app.route('/base64ocr', methods=["POST"])
 def getCode():
     img_b64 = request.get_data()
     img_bytes = base64.b64decode(img_b64.strip())
