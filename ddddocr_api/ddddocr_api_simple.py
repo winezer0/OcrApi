@@ -17,6 +17,7 @@ def getCode():
 
     # 接受请求数据
     img_b64 = request.get_data()
+
     # 输出请求数据
     # print(f"Base64 Img Data: {str(img_b64[:20] if len(img_b64) > 20 else img_b64)} ...")
     print(f"Base64 Img Data Length: {len(img_b64)}.")
@@ -27,16 +28,17 @@ def getCode():
 
     # 解码 base64 图像数据
     try:
-        img = base64.b64decode(img_b64.strip())
+        img_bin = base64.b64decode(img_b64.strip())
         print(f"Base64 decoded success.")
     except Exception as e:
-        print(f"Error decoding base64: {e}")
-        return ""
+        # 当传入的数据不是base64的时候直接当作图片二进制处理
+        print(f"Error decoding base64: {e}, POST Possible Img Binary...")
+        img_bin = img_b64
 
     # 使用 OCR 进行识别
     try:
-        text = ocr.classification(img)
-        print(f"OCR result: {text}")
+        ocr_result = ocr.classification(img_bin)
+        print(f"OCR result: {ocr_result}")
     except Exception as e:
         print(f"OCR error: {e}")
         return ""
@@ -47,7 +49,7 @@ def getCode():
 
     # 输出信息
     print(f"Processed in {processing_time:.2f}ms")
-    return text
+    return ocr_result
 
 
 if __name__ == '__main__':
