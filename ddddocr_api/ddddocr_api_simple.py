@@ -1,7 +1,6 @@
-from flask import Flask, request
-import json
-import ddddocr
 import base64
+import ddddocr
+from flask import Flask, request
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -20,4 +19,4 @@ def getCode():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5000)
