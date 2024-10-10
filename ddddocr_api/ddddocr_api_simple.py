@@ -1,6 +1,7 @@
 import base64
 import ddddocr
 from flask import Flask, request
+from datetime import datetime
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -10,11 +11,42 @@ ocr = ddddocr.DdddOcr()
 @app.route('/', methods=["POST"])
 @app.route('/base64ocr', methods=["POST"])
 def getCode():
+    # 获取当前请求的时间
+    start_time = datetime.now()
+    print(f"Request At: {start_time}")
+
+    # 接受请求数据
     img_b64 = request.get_data()
-    print(f"img_b64:{img_b64}")
-    img = base64.b64decode(img_b64.strip())
-    text = ocr.classification(img)
-    print(text)
+    # 输出请求数据
+    # print(f"Base64 Img Data: {str(img_b64[:20] if len(img_b64) > 20 else img_b64)} ...")
+    print(f"Base64 Img Data Length: {len(img_b64)}.")
+
+    if not img_b64:
+        print(f"Base64 Img Data Is Null !!!")
+        return ""
+
+    # 解码 base64 图像数据
+    try:
+        img = base64.b64decode(img_b64.strip())
+        print(f"Base64 decoded success.")
+    except Exception as e:
+        print(f"Error decoding base64: {e}")
+        return ""
+
+    # 使用 OCR 进行识别
+    try:
+        text = ocr.classification(img)
+        print(f"OCR result: {text}")
+    except Exception as e:
+        print(f"OCR error: {e}")
+        return ""
+
+    # 计算请求处理时间
+    end_time = datetime.now()
+    processing_time = (end_time - start_time).total_seconds() * 1000
+
+    # 输出信息
+    print(f"Processed in {processing_time:.2f}ms")
     return text
 
 
