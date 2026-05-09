@@ -1,0 +1,6 @@
+flask
+requests
+openai
+fastapi
+uvicorn
+httpx

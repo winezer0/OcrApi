@@ -1,0 +1,9 @@
+server:
+  host: "127.0.0.1"
+  port: 5001
+
+dashscope:
+  api_key: "sk-xxxxxxxxxxxxxxxxxxxxxxx"
+  base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+  model: "qwen3.5-flash"
+  timeout: 30

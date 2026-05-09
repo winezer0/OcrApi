@@ -1,0 +1,2 @@
+python paddleocr_api.py
+pause

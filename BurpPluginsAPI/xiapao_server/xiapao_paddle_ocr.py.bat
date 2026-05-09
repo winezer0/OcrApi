@@ -1,0 +1,2 @@
+python3 xiapao_paddle_ocr.py
+pause

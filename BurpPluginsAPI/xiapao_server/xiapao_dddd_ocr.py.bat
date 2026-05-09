@@ -1,0 +1,2 @@
+python3 xiapao_dddd_ocr.py
+pause
